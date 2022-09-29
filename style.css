@@ -1,13 +1,27 @@
+html {
+    background-color: aliceblue;
+}
+
 #calculator {
     border: 2px solid black;
     width: 400px;
-    height: 560px;
+    height: 540px;
     display: flex;
     flex-wrap: wrap;
-    padding-top: 20px;
+    padding: 10px;
+    background-color: black;
+    margin:auto;
+    /* margin-top: 50%;
+    margin-bottom: 50%; */
+}
+#created {
+    color: darkgray;
+    /* border: 2px solid white; */
+    width: 180px;
+    height: 20px;
 }
 #display {
-    border: 2px solid red;
+    border: 2px solid gray;
     height: 60px;
     width: 380px;
     padding: 8px;
@@ -16,22 +30,21 @@
     justify-content: right;
     font-size: 40px;
     font-weight: bold;
+    background-color: white;
 }
 #buttons {
-    border:2px solid yellow;
+    border:2px solid darkgray;
     display: flex;
 }
 #numbers {
     display: flex;
     flex-wrap: wrap;
-    border: 2px solid red;
+    /* border: 2px solid red; */
 }
 #operators {
-    border: 2px solid green;
+    /* border: 2px solid green; */
     display: flex;
     flex-direction: column;
-    /* padding: 8px; */
-
 }
 .number,.operators,#clear,#equals {
     font-weight: bold;
