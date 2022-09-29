@@ -40,6 +40,7 @@ numButtons.forEach((button) => {
     button.addEventListener('click', () => {
         display.textContent = num1 + button.textContent;
         num1 = parseInt(display.textContent);
+        //console.log(num1,'and',num2)
     })
 })
 
@@ -48,17 +49,25 @@ clear.addEventListener('click', () => {
     display.textContent = '';
     num1 = '';
     num2 = '';
-    //Will also need to clear stored signs / variables here.
 })
 
 const operators = document.querySelectorAll('.operators');
 operators.forEach((button) => {
     button.addEventListener('click', () => {
+        if (num2 != '') {
+            display.textContent = operate(num2, num1, operation);
+            //console.log(operate(num1,num2,operation));
+            num2 = parseInt(display.textContent);
+            num1 = '';
+            operation = button.textContent;
+            //console.log(num1, num2, operation);
+        } else {
         num2 = num1;
         operation = button.textContent;
-        console.log(num1, operation);
-        display.textContent = button.textContent;
+        //console.log(num1, num2, operation);
         num1 = '';
+        //console.log(num1, num2, operation, 'me');
+        }
     })
 })
 
@@ -66,4 +75,5 @@ const equals = document.querySelector('#equals');
 equals.addEventListener('click', () => {
     display.textContent = operate(num2, num1, operation);
     num1 = parseInt(display.textContent);
+    //console.log(num2, num1);
 })
