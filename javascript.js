@@ -1,5 +1,6 @@
 function add (a, b) {
-
+    a = parseFloat(a);
+    b = parseFloat(b);
     return a + b;
 };
 
@@ -39,7 +40,7 @@ const display = document.getElementById('display');
 numButtons.forEach((button) => {
     button.addEventListener('click', () => {
         display.textContent = num1 + button.textContent;
-        num1 = parseInt(display.textContent);
+        num1 = display.textContent;
         //console.log(num1,'and',num2)
     })
 })
@@ -57,7 +58,7 @@ operators.forEach((button) => {
         if (num2 != '') {
             display.textContent = operate(num2, num1, operation);
             //console.log(operate(num1,num2,operation));
-            num2 = parseInt(display.textContent);
+            num2 = display.textContent;
             num1 = '';
             operation = button.textContent;
             //console.log(num1, num2, operation);
@@ -74,6 +75,6 @@ operators.forEach((button) => {
 const equals = document.querySelector('#equals');
 equals.addEventListener('click', () => {
     display.textContent = operate(num2, num1, operation);
-    num1 = parseInt(display.textContent);
+    num1 = display.textContent;
     //console.log(num2, num1);
 })
