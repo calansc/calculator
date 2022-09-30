@@ -31,9 +31,15 @@ function operate (a, b, c) {
     }
 }
 
+function roundToFive(num) {
+    return +(Math.round(num + "e+5")  + "e-5");
+}
+
+
 let num1 = '';
 let num2 = '';
 let operation = '';
+//let numStore = '';
 
 const numButtons = document.querySelectorAll('.number');
 const display = document.getElementById('display');
@@ -41,7 +47,6 @@ numButtons.forEach((button) => {
     button.addEventListener('click', () => {
         display.textContent = num1 + button.textContent;
         num1 = display.textContent;
-        //console.log(num1,'and',num2)
     })
 })
 
@@ -57,24 +62,40 @@ operators.forEach((button) => {
     button.addEventListener('click', () => {
         if (num2 != '') {
             display.textContent = operate(num2, num1, operation);
-            //console.log(operate(num1,num2,operation));
             num2 = display.textContent;
             num1 = '';
             operation = button.textContent;
-            //console.log(num1, num2, operation);
         } else {
         num2 = num1;
         operation = button.textContent;
-        //console.log(num1, num2, operation);
         num1 = '';
-        //console.log(num1, num2, operation, 'me');
         }
     })
 })
 
 const equals = document.querySelector('#equals');
 equals.addEventListener('click', () => {
-    display.textContent = operate(num2, num1, operation);
-    num1 = display.textContent;
-    //console.log(num2, num1);
+    if (num1 == '' && num2 == '') {
+        display.textContent = '0';
+    } else if (num1 == '') {
+        display.textContent = 'Error';
+    } else if (num2 == '') {
+        display.textContent = num1;
+    } else {
+        display.textContent = roundToFive(operate(num2, num1, operation));
+        num1 = display.textContent;
+        num2 = '';
+    }
 })
+
+
+
+
+//Limit display character limit to not overflow 'view' window.
+//18 char limit. Round answer as needed.
+//
+//
+// How to handle equal being pressed before an operator
+// Or after an operator without a second number
+//
+//Handle divide by 0
