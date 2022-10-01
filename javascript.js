@@ -35,6 +35,16 @@ function roundToFive(num) {
     return +(Math.round(num + "e+5")  + "e-5");
 }
 
+function checkDot() {
+    let displayContent = display.textContent.length;
+    //console.log(displayContent);
+    let i = 0;
+    while (i < displayContent) {
+        console.log(i, display.textContent.length);
+        i++;
+    }
+}
+
 
 let num1 = '';
 let num2 = '';
@@ -49,6 +59,12 @@ numButtons.forEach((button) => {
         num1 = display.textContent;
     })
 })
+
+const dotButton = document.querySelector('#point');
+dotButton.addEventListener('click', () => {
+    display.textContent = num1 + button.textContent;
+    num1 = display.textContent;
+});
 
 const clear = document.querySelector('#clear');
 clear.addEventListener('click', () => {
@@ -92,10 +108,15 @@ equals.addEventListener('click', () => {
 
 
 //Limit display character limit to not overflow 'view' window.
-//18 char limit. Round answer as needed.
+//18 char limit. Round answer as needed. 
+// ----Check length of string before adding digits
 //
-//
-// How to handle equal being pressed before an operator
-// Or after an operator without a second number
+//After equal is pressed, and then a new number is pressed, it adds onto
+//the last displayed number
 //
 //Handle divide by 0
+//display poptart cat?
+//
+//Don't let more than one dot into the display.
+//Separate dot button from numbers and have it check for existence of a 
+//dot in display?
