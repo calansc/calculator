@@ -13,10 +13,11 @@ function multiply (a, b) {
 };
 
 function divide (a, b) {
-    if (b === 0) {
-        return 'Divide by O';
+    if (b == 0) {
+        console.log('hi');
+        //display.textContent = 'stop it';
     } else {
-    return a / b;}
+        return a / b;}
 };
 
 function operate (a, b, c) {
@@ -29,21 +30,22 @@ function operate (a, b, c) {
     } else if (c === '/') {
         return divide(a, b);
     }
-}
+};
 
 function roundToFive(num) {
     return +(Math.round(num + "e+5")  + "e-5");
-}
+};
 
 function checkDot() {
-    let displayContent = display.textContent.length;
-    //console.log(displayContent);
-    let i = 0;
-    while (i < displayContent) {
-        console.log(i, display.textContent.length);
-        i++;
+    let dot = ".";
+    return num1.includes(dot);
+};
+
+function displayLength() {
+    if (display.textContent.length <= 15) {
+        return true;
     }
-}
+};
 
 
 let num1 = '';
@@ -55,39 +57,55 @@ const numButtons = document.querySelectorAll('.number');
 const display = document.getElementById('display');
 numButtons.forEach((button) => {
     button.addEventListener('click', () => {
+        if (displayLength() === true) {
         display.textContent = num1 + button.textContent;
         num1 = display.textContent;
+        }
     })
-})
+});
 
 const dotButton = document.querySelector('#point');
 dotButton.addEventListener('click', () => {
-    display.textContent = num1 + button.textContent;
-    num1 = display.textContent;
+    if (checkDot() === false && displayLength() === true) {
+        display.textContent = num1 + dotButton.textContent;
+        num1 = display.textContent;
+    }
 });
 
 const clear = document.querySelector('#clear');
 clear.addEventListener('click', () => {
-    display.textContent = '';
+    display.textContent = '0';
     num1 = '';
     num2 = '';
-})
+});
+
+const percent = document.querySelector('#percent');
+percent.addEventListener('click', () => {
+    display.textContent = num1 / 100;
+    num1 = display.textContent;
+});
+
+const plusMinus = document.querySelector('#plusMinus');
+plusMinus.addEventListener('click', () => {
+    display.textContent = '-' + num1;
+    num1 = display.textContent;
+});
 
 const operators = document.querySelectorAll('.operators');
 operators.forEach((button) => {
     button.addEventListener('click', () => {
         if (num2 != '') {
-            display.textContent = operate(num2, num1, operation);
+            display.textContent = roundToFive(operate(num2, num1, operation));
             num2 = display.textContent;
             num1 = '';
             operation = button.textContent;
         } else {
-        num2 = num1;
-        operation = button.textContent;
-        num1 = '';
+            num2 = num1;
+            operation = button.textContent;
+            num1 = '';
         }
     })
-})
+});
 
 const equals = document.querySelector('#equals');
 equals.addEventListener('click', () => {
@@ -107,16 +125,9 @@ equals.addEventListener('click', () => {
 
 
 
-//Limit display character limit to not overflow 'view' window.
-//18 char limit. Round answer as needed. 
-// ----Check length of string before adding digits
-//
 //After equal is pressed, and then a new number is pressed, it adds onto
 //the last displayed number
 //
 //Handle divide by 0
 //display poptart cat?
 //
-//Don't let more than one dot into the display.
-//Separate dot button from numbers and have it check for existence of a 
-//dot in display?
