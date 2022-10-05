@@ -115,7 +115,7 @@ const numButtons = document.querySelectorAll('.number');
 const display = document.getElementById('display');
 numButtons.forEach((button) => {
     button.addEventListener('click', numberButtons, false);
-    //button.addEventListener('touchstart', numberButtons, false);
+    // button.addEventListener('keydown', numberButtons, false);
 });
 
 const dotButton = document.querySelector('#point');
@@ -144,7 +144,42 @@ const equals = document.querySelector('#equals');
 equals.addEventListener('click', equalsButton, false);
 //equals.addEventListener('touchstart', equalsButton, false);
 
+window.addEventListener('keydown', function(event) {
+    console.log(event.code);
+    if (event.code === 'Digit1') {
+        this.document.getElementById('one').click();
+    } else if (event.code === 'Digit2') {
+        this.document.getElementById('two').click();
+    } else if (event.code === 'Digit3') {
+        this.document.getElementById('three').click();
+    } else if (event.code === 'Digit4') {
+        this.document.getElementById('four').click();
+    } else if (event.code === 'Digit5') {
+        this.document.getElementById('five').click();
+    } else if (event.code === 'Digit6') {
+        this.document.getElementById('six').click();
+    } else if (event.code === 'Digit7') {
+        this.document.getElementById('seven').click();
+    } else if (event.code === 'Digit8') {
+        this.document.getElementById('eight').click();
+    } else if (event.code === 'Digit9') {
+        this.document.getElementById('nine').click();
+    } else if (event.code === 'Digit0') {
+        this.document.getElementById('zero').click();
+    } else if (event.code === 'Period') {
+        this.document.getElementById('point').click();
+    } else if (event.code === 'Equal') {
+        this.document.getElementById('equals').click();
+    } 
+})
+
 
 
 //After equal is pressed, and then a new number is pressed, it adds onto
 //the last displayed number
+//
+//Pressing multiple equal multiple times should continue the previous 
+//operation 3+3=6 =9 =12
+//
+//Pressing percent multiple times overflows display and eventually goes
+//to scientific notation
