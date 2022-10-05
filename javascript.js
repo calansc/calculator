@@ -88,8 +88,7 @@ percent.addEventListener('click', () => {
 
 const plusMinus = document.querySelector('#plusMinus');
 plusMinus.addEventListener('click', () => {
-    parseFloat(num1);
-    display.textContent = '-' + num1;
+    display.textContent = num1 * -1;
     num1 = display.textContent;
 });
 
