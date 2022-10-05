@@ -115,34 +115,34 @@ const numButtons = document.querySelectorAll('.number');
 const display = document.getElementById('display');
 numButtons.forEach((button) => {
     button.addEventListener('click', numberButtons, false);
-    button.addEventListener('touchstart', numberButtons, false);
+    //button.addEventListener('touchstart', numberButtons, false);
 });
 
 const dotButton = document.querySelector('#point');
 dotButton.addEventListener('click', dotButtonFunction, false);
-dotButton.addEventListener('touchstart', dotButtonFunction, false);
+//dotButton.addEventListener('touchstart', dotButtonFunction, false);
 
 const clear = document.querySelector('#clear');
 clear.addEventListener('click', clearFunction, false);
-clear.addEventListener('touchstart', clearFunction, false);
+//clear.addEventListener('touchstart', clearFunction, false);
 
 const percent = document.querySelector('#percent');
 percent.addEventListener('click', percentButton, false);
-percent.addEventListener('touchstart', percentButton, false);
+//percent.addEventListener('touchstart', percentButton, false);
 
 const plusMinus = document.querySelector('#plusMinus');
 plusMinus.addEventListener('click', plusMinusButton, false);
-plusMinus.addEventListener('touchstart', plusMinusButton, false);
+//plusMinus.addEventListener('touchstart', plusMinusButton, false);
 
 const operators = document.querySelectorAll('.operators');
 operators.forEach((button) => {
     button.addEventListener('click', operatorsFunction, false);
-    button.addEventListener('touchstart', operatorsFunction, false);
+    //button.addEventListener('touchstart', operatorsFunction, false);
 });
 
 const equals = document.querySelector('#equals');
 equals.addEventListener('click', equalsButton, false);
-equals.addEventListener('touchstart', equalsButton, false);
+//equals.addEventListener('touchstart', equalsButton, false);
 
 
 
