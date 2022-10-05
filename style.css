@@ -23,7 +23,7 @@ html {
     margin-left: 8px;
 }
 #display {
-    border: 2px solid gray;
+    border: 1px solid black;
     border-radius: 8px;
     height: 60px;
     width: 370px;
@@ -51,6 +51,7 @@ html {
     flex-direction: column;
 } */
 .number,.operators,#clear,#equals, #point, #percent, #plusMinus {
+    border: 1px solid black;
     border-radius: 8px;
     font-weight: bold;
     font-size: 40px;
@@ -60,6 +61,7 @@ html {
 }
 
 #zero {
+    border: 1px solid black;
     border-radius: 8px;
     font-weight: bold;
     font-size: 40px;

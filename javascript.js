@@ -128,5 +128,3 @@ equals.addEventListener('click', () => {
 
 //After equal is pressed, and then a new number is pressed, it adds onto
 //the last displayed number
-//
-//PlusMinus button, only goes negative, need to go back to positive
