@@ -48,68 +48,50 @@ function displayLength() {
     }
 };
 
+function clearFunction() {
+    display.textContent = '0';
+    num1 = '';
+    num2 = '';
+};
 
-let num1 = '';
-let num2 = '';
-let operation = '';
-//let numStore = '';
-
-const numButtons = document.querySelectorAll('.number');
-const display = document.getElementById('display');
-numButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-        if (displayLength() === true) {
-        display.textContent = num1 + button.textContent;
+function numberButtons() {
+    if (displayLength() === true) {
+        display.textContent = num1 + this.textContent;
         num1 = display.textContent;
         }
-    })
-});
+};
 
-const dotButton = document.querySelector('#point');
-dotButton.addEventListener('click', () => {
+function dotButtonFunction() {
     if (checkDot() === false && displayLength() === true) {
         display.textContent = num1 + dotButton.textContent;
         num1 = display.textContent;
     }
-});
+};
 
-const clear = document.querySelector('#clear');
-clear.addEventListener('click', () => {
-    display.textContent = '0';
-    num1 = '';
-    num2 = '';
-});
-
-const percent = document.querySelector('#percent');
-percent.addEventListener('click', () => {
+function percentButton() {
     display.textContent = num1 / 100;
     num1 = display.textContent;
-});
+};
 
-const plusMinus = document.querySelector('#plusMinus');
-plusMinus.addEventListener('click', () => {
+function plusMinusButton() {
     display.textContent = num1 * -1;
     num1 = display.textContent;
-});
+};
 
-const operators = document.querySelectorAll('.operators');
-operators.forEach((button) => {
-    button.addEventListener('click', () => {
-        if (num2 != '') {
-            display.textContent = roundToFive(operate(num2, num1, operation));
-            num2 = display.textContent;
-            num1 = '';
-            operation = button.textContent;
-        } else {
-            num2 = num1;
-            operation = button.textContent;
-            num1 = '';
-        }
-    })
-});
+function operatorsFunction() {
+    if (num2 != '') {
+        display.textContent = roundToFive(operate(num2, num1, operation));
+        num2 = display.textContent;
+        num1 = '';
+        operation = this.textContent;
+    } else {
+        num2 = num1;
+        operation = this.textContent;
+        num1 = '';
+    }
+};
 
-const equals = document.querySelector('#equals');
-equals.addEventListener('click', () => {
+function equalsButton() {
     if (num1 == '' && num2 == '') {
         display.textContent = '0';
     } else if (num1 == '') {
@@ -121,8 +103,46 @@ equals.addEventListener('click', () => {
         num1 = display.textContent;
         num2 = '';
     }
-})
+};
 
+
+
+let num1 = '';
+let num2 = '';
+let operation = '';
+
+const numButtons = document.querySelectorAll('.number');
+const display = document.getElementById('display');
+numButtons.forEach((button) => {
+    button.addEventListener('click', numberButtons, false);
+    button.addEventListener('touchstart', numberButtons, false);
+});
+
+const dotButton = document.querySelector('#point');
+dotButton.addEventListener('click', dotButtonFunction, false);
+dotButton.addEventListener('touchstart', dotButtonFunction, false);
+
+const clear = document.querySelector('#clear');
+clear.addEventListener('click', clearFunction, false);
+clear.addEventListener('touchstart', clearFunction, false);
+
+const percent = document.querySelector('#percent');
+percent.addEventListener('click', percentButton, false);
+percent.addEventListener('touchstart', percentButton, false);
+
+const plusMinus = document.querySelector('#plusMinus');
+plusMinus.addEventListener('click', plusMinusButton, false);
+plusMinus.addEventListener('touchstart', plusMinusButton, false);
+
+const operators = document.querySelectorAll('.operators');
+operators.forEach((button) => {
+    button.addEventListener('click', operatorsFunction, false);
+    button.addEventListener('touchstart', operatorsFunction, false);
+});
+
+const equals = document.querySelector('#equals');
+equals.addEventListener('click', equalsButton, false);
+equals.addEventListener('touchstart', equalsButton, false);
 
 
 
