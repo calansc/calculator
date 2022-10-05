@@ -14,7 +14,8 @@ function multiply (a, b) {
 
 function divide (a, b) {
     if (b == 0) {
-        console.log('hi');
+        alert('No dividing by 0!')
+        return 0;
         //display.textContent = 'stop it';
     } else {
         return a / b;}
@@ -87,6 +88,7 @@ percent.addEventListener('click', () => {
 
 const plusMinus = document.querySelector('#plusMinus');
 plusMinus.addEventListener('click', () => {
+    parseFloat(num1);
     display.textContent = '-' + num1;
     num1 = display.textContent;
 });
@@ -128,6 +130,4 @@ equals.addEventListener('click', () => {
 //After equal is pressed, and then a new number is pressed, it adds onto
 //the last displayed number
 //
-//Handle divide by 0
-//display poptart cat?
-//
+//PlusMinus button, only goes negative, need to go back to positive
