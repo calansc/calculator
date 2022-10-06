@@ -1,3 +1,9 @@
+let num1 = '';
+let num2 = '';
+let num3 = '';
+let num4 = '';
+let operation = '';
+
 function add (a, b) {
     a = parseFloat(a);
     b = parseFloat(b);
@@ -33,13 +39,14 @@ function operate (a, b, c) {
     }
 };
 
-function roundToFive(num) {
-    return +(Math.round(num + "e+5")  + "e-5");
+function roundToSix(num) {
+    return +(Math.round(num + "e+6")  + "e-6");
 };
 
-function checkDot() {
-    let dot = ".";
-    return num1.includes(dot);
+function checkDecimal() {
+    let decimal = ".";
+    return num1.includes(decimal);
+    // if display === num1 || display === num2 ... may need to change
 };
 
 function displayLength() {
@@ -52,35 +59,43 @@ function clearFunction() {
     display.textContent = '0';
     num1 = '';
     num2 = '';
+    num3 = '';
+    operation = '';
 };
 
 function numberButtons() {
-    if (displayLength() === true) {
+    if (displayLength() === true && num3 == '') {
         display.textContent = num1 + this.textContent;
         num1 = display.textContent;
-        }
+    } else if (displayLength() === true) {
+        display.textContent = this.textContent;
+        num1 = display.textContent;
+        num3 = '';
+    }
 };
 
-function dotButtonFunction() {
-    if (checkDot() === false && displayLength() === true) {
+function decimalFunction() {
+    if (checkDecimal() === false && displayLength() === true) {
         display.textContent = num1 + dotButton.textContent;
         num1 = display.textContent;
     }
 };
 
 function percentButton() {
-    display.textContent = num1 / 100;
-    num1 = display.textContent;
+    if (display.textContent >= .0001) {
+        display.textContent = roundToSix(num1 / 100);
+        num1 = display.textContent;
+    }
 };
 
-function plusMinusButton() {
+function signChangeButton() {
     display.textContent = num1 * -1;
     num1 = display.textContent;
 };
 
 function operatorsFunction() {
     if (num2 != '') {
-        display.textContent = roundToFive(operate(num2, num1, operation));
+        display.textContent = roundToSix(operate(num2, num1, operation));
         num2 = display.textContent;
         num1 = '';
         operation = this.textContent;
@@ -96,20 +111,17 @@ function equalsButton() {
         display.textContent = '0';
     } else if (num1 == '') {
         display.textContent = 'Error';
-    } else if (num2 == '') {
+    } else if (num2 == '' && num3 == '') {
         display.textContent = num1;
-    } else {
-        display.textContent = roundToFive(operate(num2, num1, operation));
-        num1 = display.textContent;
+    } else if (num3 !== '') { 
+        display.textContent = roundToSix(operate(num3, num1, operation));
+        num3 = display.textContent;
         num2 = '';
+    } else {
+        display.textContent = roundToSix(operate(num2, num1, operation));
+        num3 = display.textContent;
     }
 };
-
-
-
-let num1 = '';
-let num2 = '';
-let operation = '';
 
 const numButtons = document.querySelectorAll('.number');
 const display = document.getElementById('display');
@@ -118,8 +130,8 @@ numButtons.forEach((button) => {
     // button.addEventListener('keydown', numberButtons, false);
 });
 
-const dotButton = document.querySelector('#point');
-dotButton.addEventListener('click', dotButtonFunction, false);
+const dotButton = document.querySelector('#decimal');
+dotButton.addEventListener('click', decimalFunction, false);
 //dotButton.addEventListener('touchstart', dotButtonFunction, false);
 
 const clear = document.querySelector('#clear');
@@ -131,7 +143,7 @@ percent.addEventListener('click', percentButton, false);
 //percent.addEventListener('touchstart', percentButton, false);
 
 const plusMinus = document.querySelector('#plusMinus');
-plusMinus.addEventListener('click', plusMinusButton, false);
+plusMinus.addEventListener('click', signChangeButton, false);
 //plusMinus.addEventListener('touchstart', plusMinusButton, false);
 
 const operators = document.querySelectorAll('.operators');
@@ -167,7 +179,7 @@ window.addEventListener('keydown', function(event) {
     } else if (event.code === 'Digit0' || event.code === 'Numpad0') {
         this.document.getElementById('zero').click();
     } else if (event.code === 'Period' || event.code === 'NumpadDecimal') {
-        this.document.getElementById('point').click();
+        this.document.getElementById('decimal').click();
     } else if (event.code === 'Equal' || event.code === 'NumpadEnter') {
         this.document.getElementById('equals').click();
     } else if (event.code === 'NumpadAdd') {
@@ -181,13 +193,3 @@ window.addEventListener('keydown', function(event) {
     } 
 })
 
-
-
-//After equal is pressed, and then a new number is pressed, it adds onto
-//the last displayed number
-//
-//Pressing multiple equal multiple times should continue the previous 
-//operation 3+3=6 =9 =12
-//
-//Pressing percent multiple times overflows display and eventually goes
-//to scientific notation

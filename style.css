@@ -50,7 +50,7 @@ html {
     display: flex;
     flex-direction: column;
 } */
-.number,.operators,#clear,#equals, #point, #percent, #plusMinus {
+.number,.operators,#clear,#equals, #decimal, #percent, #plusMinus {
     border: 1px solid black;
     border-radius: 8px;
     font-weight: bold;
@@ -76,6 +76,6 @@ html {
 .operators, #equals {
     background-color: lightsalmon;
 }
-.number, #point {
+.number, #decimal {
     background-color: lightseagreen;
 }
