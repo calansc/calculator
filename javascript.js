@@ -146,30 +146,38 @@ equals.addEventListener('click', equalsButton, false);
 
 window.addEventListener('keydown', function(event) {
     console.log(event.code);
-    if (event.code === 'Digit1') {
+    if (event.code === 'Digit1' || event.code === 'Numpad1') {
         this.document.getElementById('one').click();
-    } else if (event.code === 'Digit2') {
+    } else if (event.code === 'Digit2' || event.code === 'Numpad2') {
         this.document.getElementById('two').click();
-    } else if (event.code === 'Digit3') {
+    } else if (event.code === 'Digit3' || event.code === 'Numpad3') {
         this.document.getElementById('three').click();
-    } else if (event.code === 'Digit4') {
+    } else if (event.code === 'Digit4' || event.code === 'Numpad4') {
         this.document.getElementById('four').click();
-    } else if (event.code === 'Digit5') {
+    } else if (event.code === 'Digit5' || event.code === 'Numpad5') {
         this.document.getElementById('five').click();
-    } else if (event.code === 'Digit6') {
+    } else if (event.code === 'Digit6' || event.code === 'Numpad6') {
         this.document.getElementById('six').click();
-    } else if (event.code === 'Digit7') {
+    } else if (event.code === 'Digit7' || event.code === 'Numpad7') {
         this.document.getElementById('seven').click();
-    } else if (event.code === 'Digit8') {
+    } else if (event.code === 'Digit8' || event.code === 'Numpad8') {
         this.document.getElementById('eight').click();
-    } else if (event.code === 'Digit9') {
+    } else if (event.code === 'Digit9' || event.code === 'Numpad9') {
         this.document.getElementById('nine').click();
-    } else if (event.code === 'Digit0') {
+    } else if (event.code === 'Digit0' || event.code === 'Numpad0') {
         this.document.getElementById('zero').click();
-    } else if (event.code === 'Period') {
+    } else if (event.code === 'Period' || event.code === 'NumpadDecimal') {
         this.document.getElementById('point').click();
-    } else if (event.code === 'Equal') {
+    } else if (event.code === 'Equal' || event.code === 'NumpadEnter') {
         this.document.getElementById('equals').click();
+    } else if (event.code === 'NumpadAdd') {
+        this.document.getElementById('add').click();
+    } else if (event.code === 'NumpadSubtract') {
+        this.document.getElementById('subtract').click();
+    } else if (event.code === 'NumpadMultiply') {
+        this.document.getElementById('multiply').click();
+    } else if (event.code === 'NumpadDivide') {
+        this.document.getElementById('divide').click();
     } 
 })
 
