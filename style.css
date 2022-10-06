@@ -50,7 +50,7 @@ html {
     display: flex;
     flex-direction: column;
 } */
-.number,.operators,#clear,#equals, #decimal, #percent, #plusMinus {
+.number,.operators,#clear,#equals, #decimal, #percent,#backspace, #plusMinus {
     border: 1px solid black;
     border-radius: 8px;
     font-weight: bold;
@@ -70,7 +70,7 @@ html {
     margin: 2px;
 }
 
-#clear, #percent, #plusMinus {
+#clear, #percent, #backspace, #plusMinus {
     background-color: lightcoral;
 }
 .operators, #equals {

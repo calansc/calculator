@@ -88,6 +88,12 @@ function percentButton() {
     }
 };
 
+function backSpaceButton() {
+    display.textContent = 
+    display.textContent.slice(0,display.textContent.length-1);
+    num1 = display.textContent;
+};
+
 function signChangeButton() {
     display.textContent = num1 * -1;
     num1 = display.textContent;
@@ -127,34 +133,30 @@ const numButtons = document.querySelectorAll('.number');
 const display = document.getElementById('display');
 numButtons.forEach((button) => {
     button.addEventListener('click', numberButtons, false);
-    // button.addEventListener('keydown', numberButtons, false);
 });
 
 const dotButton = document.querySelector('#decimal');
 dotButton.addEventListener('click', decimalFunction, false);
-//dotButton.addEventListener('touchstart', dotButtonFunction, false);
 
 const clear = document.querySelector('#clear');
 clear.addEventListener('click', clearFunction, false);
-//clear.addEventListener('touchstart', clearFunction, false);
 
-const percent = document.querySelector('#percent');
-percent.addEventListener('click', percentButton, false);
-//percent.addEventListener('touchstart', percentButton, false);
+// const percent = document.querySelector('#percent');
+// percent.addEventListener('click', percentButton, false);
+
+const backspace = document.querySelector('#backspace');
+backspace.addEventListener('click', backSpaceButton, false);
 
 const plusMinus = document.querySelector('#plusMinus');
 plusMinus.addEventListener('click', signChangeButton, false);
-//plusMinus.addEventListener('touchstart', plusMinusButton, false);
 
 const operators = document.querySelectorAll('.operators');
 operators.forEach((button) => {
     button.addEventListener('click', operatorsFunction, false);
-    //button.addEventListener('touchstart', operatorsFunction, false);
 });
 
 const equals = document.querySelector('#equals');
 equals.addEventListener('click', equalsButton, false);
-//equals.addEventListener('touchstart', equalsButton, false);
 
 window.addEventListener('keydown', function(event) {
     console.log(event.code);
@@ -190,6 +192,11 @@ window.addEventListener('keydown', function(event) {
         this.document.getElementById('multiply').click();
     } else if (event.code === 'NumpadDivide') {
         this.document.getElementById('divide').click();
-    } 
-})
+    } else if (event.code === 'Delete') {
+        this.document.getElementById('clear').click();
+    } else if (event.code === 'Backspace') {
+        this.document.getElementById('backspace').click();
+    }
+});
 
+// Backspace button or percent button?
